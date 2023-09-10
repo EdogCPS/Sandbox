@@ -37,6 +37,16 @@ def dotProduct (a: list, b: list) -> float:
     elif (len(a) == 3 and len(b) == 3):
         return (a[0] * b[0]) + (a[1] * b[1]) + (a[2] * b[2])
 
+def crossProduct(a: list, b: list) -> list:
+    # if (len(a) == 2 and len(b) == 2):
+    #     # I dont know how to do this yet
+    # elif (len(a) == 3 and len(b) == 2 ):
+    AxB = [0, 0, 0]
+    AxB[0] = a[1] * b[2] - a[2] * b[1]
+    AxB[1] = a[2] * b[0] - a[0] * b[2]
+    AxB[2] = a[0] * b[1] - a[1] * b[0]
+    return AxB
+
 # def crossProduct
 #____________________________________________
 
@@ -46,8 +56,8 @@ def dotProduct (a: list, b: list) -> float:
 o = [12, -6, -12]
 p = [2, 4]
 
-g = [5, -1]
-h = [1, 5]
+g = [1, -2, 3]
+h = [2, 0, -6]
 
 s = [4, 2]
 d = [4, -3]
@@ -55,7 +65,9 @@ d = [4, -3]
 print(unitVector(o))
 print(magnitude(p))
 
-print(dotProduct(g, h))
+print(crossProduct(g, h))
+print(magnitude(crossProduct(g, h)))
+
 print(dotProduct(s, d))
 print(dotProduct(g, g))
 #____________________________________________
