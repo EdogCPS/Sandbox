@@ -14,12 +14,15 @@ k = [0, 0, 1]
 
 # Here are the methods
 #____________________________________________
+
+# Returns the Scalar of the magnitude of the vector a
 def magnitude(a: list) -> float:
     if (len(a) == 2):
         return math.sqrt(math.pow(a[0], 2) + math.pow(a[1], 2))
     elif (len(a) == 3):
         return math.sqrt(math.pow(a[0], 2) + math.pow(a[1], 2) + math.pow(a[2], 2))
 
+# Returns the Vector of the unit vector  of a
 def unitVector(a: list) -> list:
     magnitudeOfA = magnitude(a)
     b = a.copy()
@@ -31,12 +34,32 @@ def unitVector(a: list) -> list:
         b[2] = b[2]/magnitudeOfA
         return b
 
+# Returns a Vector of the sum of two vectors a + b
+def add(a: list, b: list) -> list:
+    result = a.copy()
+    result[0] = a[0] + b[0]
+    result[1] = a[1] + b[1]
+    if (len(a) == 3 and len(b) == 3):
+        result[2] = a[2] + b[3]
+    return result
+
+# Returns a vector of the subtraction of two vectors a - b
+def subtract(a:list, b: list) -> list:
+    result = a.copy()
+    result[0] = a[0] - b[0]
+    result[1] = a[1] - b[1]
+    if (len(a) == 3 and len(b) == 3):
+        result[2] = a[2] + b[3]
+    return result
+
+# Return the Scalar of the dot product from a*b
 def dotProduct (a: list, b: list) -> float:
     if (len(a) == 2 and len(b) == 2):
         return (a[0] * b[0]) + (a[1] * b[1])
     elif (len(a) == 3 and len(b) == 3):
         return (a[0] * b[0]) + (a[1] * b[1]) + (a[2] * b[2])
 
+# Retruns the vector of the corss product of aXb
 def crossProduct(a: list, b: list) -> list:
     # if (len(a) == 2 and len(b) == 2):
     #     # I dont know how to do this yet
@@ -47,7 +70,10 @@ def crossProduct(a: list, b: list) -> list:
     AxB[2] = a[0] * b[1] - a[1] * b[0]
     return AxB
 
-# def crossProduct
+# Returns the degrees between vector a and vector b
+def findDeg(a: list, b: list) -> float:
+    return math.degrees(math.acos(dotProduct(a, b)/(magnitude(a) * magnitude(b))))
+
 #____________________________________________
 
 # Call the methids here
@@ -56,20 +82,20 @@ def crossProduct(a: list, b: list) -> list:
 o = [12, -6, -12]
 p = [2, 4]
 
-g = [1, -2, 3]
-h = [2, 0, -6]
+u = [1, -2, 3]
+v = [2, 0, -6]
 
-s = [4, 2]
-d = [4, -3]
+s = [3, 4]
+d = [9, 1]
 
-print(unitVector(o))
-print(magnitude(p))
-
-print(crossProduct(g, h))
-print(magnitude(crossProduct(g, h)))
-
-print(dotProduct(s, d))
-print(dotProduct(g, g))
+print(add(s, d))
+print("\n")
+print(subtract(d, s))
+print(crossProduct(u,v))
+print(magnitude(crossProduct(u,v)))
+print("\n")
+print(findDeg(u,v))
+print(math.sin(math.radians(findDeg(u,v))))
 #____________________________________________
 
 print("\n\n")
